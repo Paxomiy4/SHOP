@@ -60,7 +60,6 @@ def get_order(order_id):
 
 def get_customer_orders(customer_id):
     with conn.cursor() as curs:
-        curs.execute('SELECT * FROM customers WHERE id=%s', (customer_id,))
         curs.execute('SELECT * FROM orders WHERE customer_id=%s', (customer_id,))
         orders = curs.fetchall()
         return orders
@@ -68,7 +67,6 @@ def get_customer_orders(customer_id):
 
 def get_product_orders(product_id):
     with conn.cursor() as curs:
-        curs.execute('SELECT * FROM product WHERE id=%s', (product_id,))
         curs.execute('SELECT * FROM orders WHERE product_id=%s', (product_id,))
         orders = curs.fetchall()
         return orders
