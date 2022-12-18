@@ -76,3 +76,17 @@ def add_order(customer_id, product_id):
     with conn.cursor() as curs:
         curs.execute('INSERT INTO orders (customer_id, product_id) values (%s, %s)', (customer_id, product_id,))
         conn.commit()
+
+
+def get_customers_ids():
+    with conn.cursor() as curs:
+        curs.execute('SELECT id FROM customers')
+        customers_ids = curs.fetchall()
+        return customers_ids
+
+
+def get_products_ids():
+    with conn.cursor() as curs:
+        curs.execute('SELECT id FROM product')
+        products_ids = curs.fetchall()
+        return products_ids
